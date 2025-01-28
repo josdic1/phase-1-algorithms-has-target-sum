@@ -1,17 +1,31 @@
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+  const seen = new Set();
+
+  for (let num of array) {
+    const visible = target - num;
+    if (seen.has(visible)) {
+      return true;
+    }
+    seen.add(num);
+  }
+
+  return false;
 }
 
-/* 
-  Write the Big O time complexity of your function here
-*/
-
-/* 
-  Add your pseudocode here
+/*
+ O(n²)
 */
 
 /*
-  Add written explanation of your solution here
+Subtract each number in the array from the target number. 
+Remove any values < 0
+Create a set to remove duplicates
+Then, compare the array of differences with the original array.
+Stop when a match is found
+*/
+
+/*
+I subtract each number in the array from the target number (differences). I remove any differences <= 0 / duplicates. I compare the remaining array with the full/original array. And stop when match is found
 */
 
 // You can run `node index.js` to view these console logs
